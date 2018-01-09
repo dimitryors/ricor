@@ -8,13 +8,15 @@
 -export([
         ping/0,
         get/1,
-        put/2
+        put/2,
+        delete/1
     ]).
 
 -ignore_xref([
         ping/0,
         get/1,
-        put/2
+        put/2,
+        delete/1
     ]).
 
 %% Public API
@@ -34,6 +36,9 @@ put(Key, Value) ->
     ricor_metrics:core_put(),
     send_to_one(Key, {put, Key, Value}).
 
+delete(Key) ->
+    ricor_metrics:core_delete(),
+    send_to_one(Key, {delete, Key}).
 
 % private functions
 

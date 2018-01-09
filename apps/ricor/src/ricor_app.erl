@@ -76,6 +76,7 @@ routes() ->
     [
      {"/ping", ricor_http_ping, []},
      {"/metrics", ricor_http_metrics, []},
+     {"/store/:bucket/:key", ricor_http_store, []},
      % Authorization
      {"/admin/:action", rcs_cowboy_handler, RcsOpts},
      {"/admin/:action/:param1", rcs_cowboy_handler, RcsOpts},
