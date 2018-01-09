@@ -31,7 +31,7 @@ stop(_State) ->
 % private functions
 rcs_is_user_authorized(Req, #{user_ctx := _UserCtx}) ->
     ResultJson = [{token, <<"atoken">>}],
-    ResultJsonBin = tanodb_json:encode(ResultJson),
+    ResultJsonBin = ricor_json:encode(ResultJson),
     Req1 = cowboy_req:set_resp_body(ResultJsonBin, Req),
     {true, Req1}.
 
@@ -65,8 +65,8 @@ setup_basic_users_and_groups() ->
 
 
 routes() ->
-    JsonEncoder = fun tanodb_json:encode/1,
-    JsonDecoder = fun tanodb_json:decode/1,
+    JsonEncoder = fun ricor_json:encode/1,
+    JsonDecoder = fun ricor_json:decode/1,
     IsAuthorizedFun = fun (Req, _Info) -> {true, Req} end,
     IsUserAuthorizedFun = fun rcs_is_user_authorized/2,
     RcsOpts = #{env_keys => [ricor],
@@ -101,4 +101,4 @@ init_http() ->
                                 CowboyOpts).
 
 env(App, Par, Def) -> application:get_env(App, Par, Def).
-envd(Par, Def) -> env(tanodb, Par, Def).
+envd(Par, Def) -> env(ricor, Par, Def).

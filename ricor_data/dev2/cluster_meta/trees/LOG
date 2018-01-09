@@ -1,0 +1,34 @@
+2018/01/09-18:00:15.856458 7f1f9b7d6700                        Version: 2.0.34 (open source)
+2018/01/09-18:00:15.856530 7f1f9b7d6700             Options.comparator: leveldb.InternalKeyComparator
+2018/01/09-18:00:15.856546 7f1f9b7d6700      Options.create_if_missing: 1
+2018/01/09-18:00:15.856555 7f1f9b7d6700        Options.error_if_exists: 0
+2018/01/09-18:00:15.856564 7f1f9b7d6700        Options.paranoid_checks: 0
+2018/01/09-18:00:15.856572 7f1f9b7d6700     Options.verify_compactions: 1
+2018/01/09-18:00:15.856581 7f1f9b7d6700                    Options.env: 0x7f1fc000a5c0
+2018/01/09-18:00:15.856590 7f1f9b7d6700               Options.info_log: 0x7f1f180025f0
+2018/01/09-18:00:15.856599 7f1f9b7d6700      Options.write_buffer_size: 5448055
+2018/01/09-18:00:15.856607 7f1f9b7d6700         Options.max_open_files: 1000
+2018/01/09-18:00:15.856616 7f1f9b7d6700            Options.block_cache: 0x7f1f180018f0
+2018/01/09-18:00:15.856625 7f1f9b7d6700             Options.block_size: 4096
+2018/01/09-18:00:15.856634 7f1f9b7d6700       Options.block_size_steps: 16
+2018/01/09-18:00:15.856643 7f1f9b7d6700 Options.block_restart_interval: 16
+2018/01/09-18:00:15.856652 7f1f9b7d6700            Options.compression: 2
+2018/01/09-18:00:15.856662 7f1f9b7d6700          Options.filter_policy: leveldb.BuiltinBloomFilter2
+2018/01/09-18:00:15.856671 7f1f9b7d6700              Options.is_repair: false
+2018/01/09-18:00:15.856679 7f1f9b7d6700         Options.is_internal_db: true
+2018/01/09-18:00:15.856687 7f1f9b7d6700      Options.total_leveldb_mem: 10175704268
+2018/01/09-18:00:15.856696 7f1f9b7d6700  Options.block_cache_threshold: 33554432
+2018/01/09-18:00:15.856705 7f1f9b7d6700  Options.limited_developer_mem: false
+2018/01/09-18:00:15.856714 7f1f9b7d6700              Options.mmap_size: 0
+2018/01/09-18:00:15.856722 7f1f9b7d6700       Options.delete_threshold: 1000
+2018/01/09-18:00:15.856731 7f1f9b7d6700       Options.fadvise_willneed: false
+2018/01/09-18:00:15.856740 7f1f9b7d6700      Options.tiered_slow_level: 0
+2018/01/09-18:00:15.856748 7f1f9b7d6700     Options.tiered_fast_prefix: /opt/erlang/ricor/ricor_data/dev2/cluster_meta/trees
+2018/01/09-18:00:15.856757 7f1f9b7d6700     Options.tiered_slow_prefix: /opt/erlang/ricor/ricor_data/dev2/cluster_meta/trees
+2018/01/09-18:00:15.856766 7f1f9b7d6700                         crc32c: hardware
+2018/01/09-18:00:15.856775 7f1f9b7d6700   Options.cache_object_warming: true
+2018/01/09-18:00:15.856783 7f1f9b7d6700        Options.ExpiryActivated: false
+2018/01/09-18:00:15.856792 7f1f9b7d6700          Options.expiry_module: NULL
+2018/01/09-18:00:15.856801 7f1f9b7d6700                File cache size: 2015605829
+2018/01/09-18:00:15.856810 7f1f9b7d6700               Block cache size: 2017702981
+2018/01/09-18:00:17.490155 7f1f9b7d6700 Delete type=3 #1
