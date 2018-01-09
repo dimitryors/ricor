@@ -1,4 +1,7 @@
 -module(ricor_vnode).
+%%
+% Third file to change
+%%
 -behaviour(riak_core_vnode).
 
 -export([start_vnode/1,
@@ -20,18 +23,45 @@
              start_vnode/1
              ]).
 
--record(state, {partition}).
+% -record(state, {partition}).
+% 1 Step
+-record(state, {partition, table_id, table_name}).
 
 %% API
 start_vnode(I) ->
     riak_core_vnode_master:get_vnode_pid(I, ?MODULE).
 
 init([Partition]) ->
-    {ok, #state { partition=Partition }}.
+    % {ok, #state { partition=Partition }}.
+    % 2 Step
+    TableName = list_to_atom("ricor_" ++ integer_to_list(Partition)),
+    TableId = ets:new(TableName, [set, public, named_table, {write_concurrency, false}, {read_concurrency, true}]),
+    {ok, #state{partition=Partition, table_id=TableId, table_name=TableName}}.
 
-%% Sample command: respond to a ping
+% 3 Step
 handle_command(ping, _Sender, State) ->
     {reply, {pong, State#state.partition}, State};
+handle_command({put, Key, Value}, _Sender, 
+        State=#state{table_name=TableName, partition=Partition}) ->
+    ets:insert(TableName, {Key, Value}),
+    {reply, {ok, Partition}, State};
+handle_command({get, Key}, _Sender, 
+        State=#state{table_name=TableName, partition=Partition}) ->
+    case ets:lookup(TableName, Key) of
+        [] ->
+            {reply, {not_found, Partition, Key}, State};
+        [Value] ->
+            {reply, {found, Partition, {Key, Value}}, State}
+    end;
+handle_command({delete, Key}, _Sender,
+               State=#state{table_name=TableName, partition=Partition}) ->
+    case ets:lookup(TableName, Key) of
+        [] ->
+            {reply, {not_found, Partition, Key}, State};
+        [Value] ->
+            true = ets:delete(TableName, Key),
+            {reply, {found, Partition, {Key, Value}}, State}
+    end;
 handle_command(Message, _Sender, State) ->
     lager:warning("unhandled_command ~p", [Message]),
     {noreply, State}.
